@@ -13,12 +13,24 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+<<<<<<< HEAD
     //fungsi eloquent menampilkan data menggunakan pagination
     $mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
     $paginate = Mahasiswa::orderBy('id_mahasiswa', 'asc')->paginate(5);
     return view('mahasiswa.index', ['mahasiswa' => $mahasiswa,'paginate'=>$paginate]);
+=======
+        if (request('search')) {
+            $paginate = Mahasiswa::where('nama', 'like', '%' . request('search') . '%')->paginate(5);
+            return view('mahasiswa.index', ['paginate'=>$paginate]);
+        } else {
+        $mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
+        $paginate = Mahasiswa::orderBy('id_mahasiswa', 'asc')->paginate(5);
+        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa,'paginate'=>$paginate]);
+        }
+>>>>>>> 3f2107c (Tugas Praktikum Jobsheet 7)
     }
 
     /**
@@ -45,6 +57,10 @@ class MahasiswaController extends Controller
         'Nama' => 'required',
         'Kelas' => 'required',
         'Jurusan' => 'required',
+        'JenisKelamin' => 'required',
+        'Email' => 'required',
+        'Alamat' => 'required',
+        'TanggalLahir' => 'required',
     ]);
     //fungsi eloquent untuk menambah data
     Mahasiswa::create($request->all());
@@ -62,7 +78,7 @@ class MahasiswaController extends Controller
     public function show($nim)
     {
         //menampilkan detail data dengan menemukan/berdasarkan Nim Mahasiswa
-        $Mahasiswa = Mahasiswa::where('nim', $nim)->first();
+        $Mahasiswa = Mahasiswa::where('nim', $nim)->paginate(5);
         return view('mahasiswa.detail', compact('Mahasiswa'));
     }
 
@@ -94,6 +110,10 @@ class MahasiswaController extends Controller
             'Nama' => 'required',
             'Kelas' => 'required',
             'Jurusan' => 'required',
+            'JenisKelamin' => 'required',
+            'Email' => 'required',
+            'Alamat' => 'required',
+            'TanggalLahir' => 'required',
     ]);
     //fungsi eloquent untuk mengupdate data inputan kita
     Mahasiswa::where('nim', $nim)
@@ -102,6 +122,10 @@ class MahasiswaController extends Controller
             'nama'=>$request->Nama,
             'kelas'=>$request->Kelas,
             'jurusan'=>$request->Jurusan,
+            'JenisKelamin'=>$request->JenisKelamin,
+            'Email'=>$request->Email,
+            'Alamat'=>$request->Alamat,
+            'TanggalLahir'=>$request->TanggalLahir
 
     ]);
     //jika data berhasil diupdate, akan kembali ke halaman utama
@@ -122,4 +146,8 @@ class MahasiswaController extends Controller
     return redirect()->route('mahasiswa.index')
         -> with('success', 'Mahasiswa Berhasil Dihapus');
     }
+
+    
 }
+
+
