@@ -16,12 +16,6 @@ class MahasiswaController extends Controller
 
     public function index()
     {
-<<<<<<< HEAD
-    //fungsi eloquent menampilkan data menggunakan pagination
-    $mahasiswa = Mahasiswa::all(); // Mengambil semua isi tabel
-    $paginate = Mahasiswa::orderBy('id_mahasiswa', 'asc')->paginate(5);
-    return view('mahasiswa.index', ['mahasiswa' => $mahasiswa,'paginate'=>$paginate]);
-=======
         if (request('search')) {
             $paginate = Mahasiswa::where('nama', 'like', '%' . request('search') . '%')->paginate(5);
             return view('mahasiswa.index', ['paginate'=>$paginate]);
@@ -30,7 +24,6 @@ class MahasiswaController extends Controller
         $paginate = Mahasiswa::orderBy('id_mahasiswa', 'asc')->paginate(5);
         return view('mahasiswa.index', ['mahasiswa' => $mahasiswa,'paginate'=>$paginate]);
         }
->>>>>>> 3f2107c (Tugas Praktikum Jobsheet 7)
     }
 
     /**
