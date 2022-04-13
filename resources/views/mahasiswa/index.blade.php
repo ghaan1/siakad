@@ -49,22 +49,23 @@
         <th>Nama</th>
         <th>Kelas</th>
         <th>Jurusan</th>
-        <th>JenisKelamin</th>
+        <!-- <th>JenisKelamin</th>
         <th>Email</th>
         <th>Alamat</th>
-        <th>TanggalLahir</th>
+        <th>TanggalLahir</th> -->
         <th width="280x">Action</th>
     </tr>
     @foreach ($paginate as $mhs)
     <tr>
         <td>{{ $mhs ->nim }}</td>
         <td>{{ $mhs ->nama }}</td>
-        <td>{{ $mhs ->kelas }}</td>
+        <!-- <td>{{ $mhs ->kelas }}</td> -->
+        <td>{{ $mhs ->Kelas -> nama_kelas}}</td>
         <td>{{ $mhs ->jurusan }}</td>
-        <td>{{ $mhs ->JenisKelamin }}</td>
-        <td>{{ $mhs ->email }}</td>
+        <!-- <td>{{ $mhs ->JenisKelamin }}</td> -->
+        <!-- <td>{{ $mhs ->email }}</td>
         <td>{{ $mhs ->Alamat }}</td>
-        <td>{{ $mhs ->TanggalLahir }}</td>
+        <td>{{ $mhs ->TanggalLahir }}</td> -->
         <td>
         <form action="{{ route('mahasiswa.destroy',['mahasiswa'=>$mhs->nim]) }}" method="POST">
             <a class="btn btn-info" href="{{ route('mahasiswa.show',$mhs->nim) }}">Show</a>

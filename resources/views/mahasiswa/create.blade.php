@@ -19,6 +19,9 @@
                 @endif
                 <form method="post" action="{{ route('mahasiswa.store') }}" id="myForm">
                 @csrf
+                    
+
+
                     <div class="form-group">
                         <label for="Nim">Nim</label>
                         <input type="text" name="Nim" class="form-control" id="Nim" aria-describedby="Nim" >
@@ -27,15 +30,23 @@
                     <label for="Nama">Nama</label>
                     <input type="Nama" name="Nama" class="form-control" id="Nama" ariadescribedby="Nama" >
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="Kelas">Kelas</label>
                     <input type="Kelas" name="Kelas" class="form-control" id="Kelas" ariadescribedby="password" >
-                </div>
+                </div> -->
+                    <div class="form-group">
+                        <label for="Kelas">Kelas</label>
+                        <select class="form-control" name="Kelas">
+                            @foreach($kelas as $kls)
+                                <option value="{{$kls->id}}" >{{$kls->nama_kelas}} </option>
+                            @endforeach
+                        </select>
+                    </div>
                 <div class="form-group">
                     <label for="Jurusan">Jurusan</label>
                     <input type="Jurusan" name="Jurusan" class="form-control" id="Jurusan" ariadescribedby="Jurusan" >
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="JenisKelamin">JenisKelamin</label>
                     <input type="text" name="JenisKelamin" class="form-control" id="JenisKelamin" ariadescribedby="JenisKelamin" >
                 </div>
@@ -50,7 +61,7 @@
                 <div class="form-group">
                     <label for="TanggalLahir">TanggalLahir</label>
                     <input type="TanggalLahir" name="TanggalLahir" class="form-control" id="TanggalLahir" ariadescribedby="TanggalLahir" >
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
