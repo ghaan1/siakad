@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
-use App\Models\Kelas;
 use Illuminate\Http\Request;
-use DB;
+use App\Models\Mahasiswa;
+use App\Models\MataKuliah;
+use App\Models\Mahasiswa_MataKuliah;
+use App\Models\Kelas;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -168,6 +170,12 @@ class MahasiswaController extends Controller
         -> with('success', 'Mahasiswa Berhasil Dihapus');
     }
 
+    public function Mahasiswa_MataKuliah($Nim)
+    {
+        $mahasiswa = Mahasiswa_MataKuliah::with('matakuliah')->where('mahasiswa_id', $Nim)->get();
+        $mahasiswa->mahasiswa = Mahasiswa::with('kelas')->where('id_mahasiswa', $Nim)->first();
+        return view('mahasiswa.nilai', ['mahasiswa' => $mahasiswa]);
+    }
     
 }
 

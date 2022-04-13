@@ -53,7 +53,7 @@
         <th>Email</th>
         <th>Alamat</th>
         <th>TanggalLahir</th> -->
-        <th width="280x">Action</th>
+        <th width="300x">Action</th>
     </tr>
     @foreach ($paginate as $mhs)
     <tr>
@@ -73,6 +73,7 @@
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Delete</button>
+            <a class="btn btn-warning" href="{{ route('mahasiswa.nilai',$mhs->id_mahasiswa) }}">Nilai</a>
         </form>
         </td>
     </tr>
