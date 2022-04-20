@@ -5,6 +5,8 @@
             <a href="{{ route('mahasiswa.index') }}" class="btn btn-secondary">Kembali</a>
         </div>
     </div>
+
+            
     <div class="col-lg-12 margin-tb">
             <div class="pull-left mt-2">
                 <h2 class="col-12 text-center" >JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
@@ -13,7 +15,8 @@
             <h3><strong>KARTU HASIL STUDI (KHS)</strong></h3>
         </div>
 
-        
+        <a style="float: right"class="btn btn-success mt-3" href="/mahasiswa/nilai/{{ $mahasiswa->mahasiswa->nim }}/pdf">Cetak KHS</a>
+
         <b>Nama:</b> {{ $mahasiswa->mahasiswa->nama }}<br>
         <b>NIM: </b>{{ $mahasiswa->mahasiswa->nim }}<br>
         <b>Kelas: </b> {{ $mahasiswa->mahasiswa->kelas->nama_kelas }}<br><br>
